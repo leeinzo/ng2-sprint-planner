@@ -45,3 +45,10 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+##NODE
+**/node_modules/**
+
+## Generated js files
+app/**/*.js
+app/**/*.map
