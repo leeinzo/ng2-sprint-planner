@@ -1,10 +1,6 @@
-import {Component} from '/angular2/core';
-
-interface Task {
-    id: number;
-    title: string;
-    estimate: number;
-}
+import {Component, OnInit} from 'angular2/core';
+import {Task} from './task';
+import {TaskService} from './task.service';
 
 @Component({
   selector: 'my-app',
@@ -72,14 +68,20 @@ interface Task {
         .task-title { width: 300px; }
         .task-estimate { width: 120px; }
         .task-list-header, .task-item { text-align: left; }
-  `]
+  `],
+  directives: [],
+  providers: [TaskService]
 })
-export class AppComponent {
-    public tasks: Task[] = TASKS;
-}
+export class AppComponent implements OnInit {
+    public tasks: Task[];
 
-var TASKS: Task[] = [
-    {id: 1, title: "Task 1", estimate: 2},
-    {id: 2, title: "Task 2", estimate: 4},
-    {id: 3, title: "Task 3", estimate: 6},  
-];
+    constructor(private _taskService: TaskService) {}
+    
+    getTasks() {
+        this._taskService.getTasks().then(tasks => this.tasks = tasks);
+    }
+    
+    ngOnInit() {
+        this.getTasks();
+    }
+}
