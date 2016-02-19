@@ -1,16 +1,4 @@
 // Place your settings in this file to overwrite the default settings
-
 {
-
-    "files.exclude": {
-
-        "src/app/**/*.js": true,
-
-        "src/app/**/*.js.map": true
-
-    },
-
-    "editor.tabSize": 2
-
 }
 
